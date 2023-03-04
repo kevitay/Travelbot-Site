@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+    <link rel="stylesheet" type="text/css" href="../css/contact.css" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script defer src="js/contact.js"></script>
+  </head>
+  <body>
+    <nav id="topnav">
+      <div id="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="tripinfo.html">Trip Info</a>
+        <a href="weather.html">Weather</a>
+        <a href="contact.html" class="selected">Contact Us!</a>
+      </div>
+    </nav>
+    <main>
+      <h1>Contact TravelBot</h1>
+      <div id="form-content">
+        <form id="contact-form" action="javascript:alert('Thanks for contacting TravelBot! We will get back with you.');">
+          <label for="name">Your name </label>
+          <input type="text" name="name" id="name" class="form-field" placeholder="Enter your name... " />
+          <br /><br />
+          <label for="email">Your email </label>
+          <input type="email" name="email" id="email" class="form-field" placeholder="Enter your email..." />
+          <br /><br />
+          <textarea name="comments" id="comments" cols="50" rows="10" id="comment-area" placeholder="Enter any comments or questions you have"></textarea>
+          <br /><br />
+          <input type="submit" class="form-button" value="Submit" />
+        </form>
+      </div>
+    </main>
+    <footer>
+      <div id="footer-main">
+        <h3>Credits</h3>
+        <ul>
+          <li><a href="https://opentripmap.io/product/">OpenTripMap API</a></li>
+          <li><a href="https://weather.visualcrossing.com/">Visual Crossing Weather API</a></li>
+        </ul>
+      </div>
+      <p>&copy; Copyright 2023 KNAMES</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+body {
+  min-height: 100vh;
+}
+
+#hero-section {
+  height: 60vh;
+  background-image: url('../images/london2.jpg');
+  background-size: cover;
+}
+
+#hero-text {
+  color: white;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 40%;
+  display: inline-block;
+  margin-top: 10%;
+  margin-left: 30%;
+}
+
+#hero-section h1 {
+  color: white;
+  font-size: 3em;
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+#hero-section h2 {
+  font-size: 1.5em;
+  font-weight: 100;
+  text-align: center;
+}
+
+#location-search {
+  padding: 50px;
+}
+
+#location-search h2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#search-form {
+  text-align: center;
+}
+
+#destination {
+  height: 3em;
+  border: 1px solid black;
+  width: 25%;
+  padding: 2px 0 2px 10px;
+  font-family: Raleway;
+  font-size: 1em;
+  font-weight: bold;
+  margin-right: 1em;
+}

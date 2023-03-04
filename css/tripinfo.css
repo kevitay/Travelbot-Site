@@ -1,0 +1,37 @@
+h1 {
+  font-size: 3em;
+  color:#e60d2e;
+  padding-left: 50px;
+  margin-top: 20px;
+}
+
+#poi-info h2 {
+  font-size: 2em;
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+#main-content {
+  min-height: 80vh;
+  padding: 50px;
+}
+
+#poi-list li {
+  font-size: 1.5em;
+  font-weight: bold;
+  list-style: none;
+  border: 1px solid black;
+  margin-bottom: 15px;
+  padding: 20px;
+  width: 50%;
+}
+
+#poi-list li a {
+  font-size: 0.75em;
+  font-weight:normal;
+  display: block;
+}
+
+#main-content a {
+  color: #e60d2e;
+}
