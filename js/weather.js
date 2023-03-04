@@ -1,5 +1,7 @@
 let destination = localStorage.getItem('location');
 
+// let destination = 'asdfkdjglkdfjgi';
+
 const getWeather = function (location) {
   let data = fetch(
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/next7days?key=L4U22KUSLGN3YLLFFS97G59BS&include=days&elements=datetime,tempmax,tempmin,precip,cloudcover,uvindex`
@@ -7,6 +9,9 @@ const getWeather = function (location) {
     .then((data) => data.json())
     .catch(function (error) {
       console.log(error);
+      let errorDisplay = document.createElement('p');
+      errorDisplay.innerText = 'Sorry, Invalid destination';
+      document.querySelector('#weather-forecast').append(errorDisplay);
     });
 
   return data;
