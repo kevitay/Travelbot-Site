@@ -27,6 +27,7 @@ const getPOI = async function (location) {
 (async () => {
 
   locationData = await getLocationData(mainPageSearch);
+  const errorComponents = document.querySelector("#tripinfo-search");
 
   const displayPoiData = async function () {
     const poiData = await getPOI(locationData);
@@ -67,6 +68,17 @@ const getPOI = async function (location) {
   } else {
 
     displayPoiData();
+
+  }
+
+  if (!(errorComponents.classList.contains("hidden"))) {
+    console.log("Time to clean up our errors!");
+    let tripPageSearch = document.querySelector("#tripinfo-search-form");
+
+    tripPageSearch.addEventListener("submit", function() {
+      
+    });
+
 
   }
 
