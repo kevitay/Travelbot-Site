@@ -75,8 +75,22 @@ const getPOI = async function (location) {
     console.log("Time to clean up our errors!");
     let tripPageSearch = document.querySelector("#tripinfo-search-form");
 
-    tripPageSearch.addEventListener("submit", function() {
-      
+
+    tripPageSearch.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let destination = document.querySelector("#tripinfo-destination").value;
+      localStorage.setItem('location', destination);
+      mainPageSearch = localStorage.getItem('location');
+
+      errorInfo.classList.add("hidden");
+      poiHeading.classList.remove("hidden");
+
+      getLocationData(mainPageSearch);
+      displayPoiData();
+
+      window.location.reload();
+
     });
 
 
