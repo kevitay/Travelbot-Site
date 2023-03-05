@@ -25,7 +25,36 @@ const getPOI = async function (location) {
 // ...slightly easier to read...  But at least now we can say there
 // is NO need for .then anywhere in this code anymore.
 (async () => {
+
   locationData = await getLocationData(mainPageSearch);
+
+  const displayPoiData = async function () {
+    const poiData = await getPOI(locationData);
+    console.log(locationData, poiData);
+  
+    const poiSearchResults = document.querySelector('#poi-list');
+  
+    for (var i = 0; i < poiData.length; i++) {
+      if (poiData[i].name === '' || poiData[i].wikidata === undefined) {
+        continue;
+      } else {
+        var poiName = document.createElement('li');
+        var poiWikidata = document.createElement('a');
+        var poiMaps = document.createElement('a');
+        var destinationName = document.querySelector('#dest-name');
+        destinationName.innerText = mainPageSearch;
+        poiWikidata.href = `https://www.wikidata.org/wiki/${poiData[i].wikidata}`;
+        poiWikidata.innerText = 'Wiki Link';
+        poiMaps.href = `http://maps.google.com/maps?z=12&t=m&q=loc:${poiData[i].point.lat}+${poiData[i].point.lon}`;
+        poiMaps.innerText = 'View Map';
+        poiName.innerText = poiData[i].name;
+        poiWikidata.append(poiMaps);
+        poiName.append(poiWikidata);
+        poiSearchResults.append(poiName);
+      }
+    }
+  }
+
   const errorInfo = document.querySelector("#tripinfo-search");
   const poiHeading = document.querySelector("#poi-info h2");
 
@@ -34,31 +63,11 @@ const getPOI = async function (location) {
   if (locationData.status === "NOT_FOUND") {
     errorInfo.classList.remove("hidden");
     poiHeading.classList.add("hidden");
-  }
 
-  const poiData = await getPOI(locationData);
-  console.log(locationData, poiData);
+  } else {
 
-  const poiSearchResults = document.querySelector('#poi-list');
+    displayPoiData();
 
-  for (var i = 0; i < poiData.length; i++) {
-    if (poiData[i].name === '' || poiData[i].wikidata === undefined) {
-      continue;
-    } else {
-      var poiName = document.createElement('li');
-      var poiWikidata = document.createElement('a');
-      var poiMaps = document.createElement('a');
-      var destinationName = document.querySelector('#dest-name');
-      destinationName.innerText = mainPageSearch;
-      poiWikidata.href = `https://www.wikidata.org/wiki/${poiData[i].wikidata}`;
-      poiWikidata.innerText = 'Wiki Link';
-      poiMaps.href = `http://maps.google.com/maps?z=12&t=m&q=loc:${poiData[i].point.lat}+${poiData[i].point.lon}`;
-      poiMaps.innerText = 'View Map';
-      poiName.innerText = poiData[i].name;
-      poiWikidata.append(poiMaps);
-      poiName.append(poiWikidata);
-      poiSearchResults.append(poiName);
-    }
   }
 
 })();
