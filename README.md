@@ -1,9 +1,9 @@
 # TravelBot Website
 
-Our site will display travel and weather data from the user's chosen destination.
+Our site will display travel points of interest and weather data from the user's chosen destination.
 
 ## K-Names Team Workflows
-- [Main story board](https://gitlab.galvanizelabs.net/cohorts/sf/ase-01-2023/projects/web-project/k-names/knames-web-project/-/boards/10)
+- [Main story board](https://github.com/users/kevitay/projects/2/views/1?layout=board)
 
 ## Design
 - [Link to wireframes](https://app.moqups.com/YpVMVQDwcTCBriNgP4djIHkx1ZYPMR7n/view/page/a57f5c842)
