@@ -31,27 +31,3 @@ body {
   font-weight: 100;
   text-align: center;
 }
-
-#location-search {
-  padding: 50px;
-}
-
-#location-search h2 {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-#search-form {
-  text-align: center;
-}
-
-#destination {
-  height: 3em;
-  border: 1px solid black;
-  width: 25%;
-  padding: 2px 0 2px 10px;
-  font-family: Raleway;
-  font-size: 1em;
-  font-weight: bold;
-  margin-right: 1em;
-}

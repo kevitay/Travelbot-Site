@@ -26,6 +26,16 @@ const getPOI = async function (location) {
 // is NO need for .then anywhere in this code anymore.
 (async () => {
   locationData = await getLocationData(mainPageSearch);
+  const errorInfo = document.querySelector("#tripinfo-search");
+  const poiHeading = document.querySelector("#poi-info h2");
+
+  // If locationData.status = "NOT_FOUND"
+    // Display the #tripinfo-search section
+  if (locationData.status === "NOT_FOUND") {
+    errorInfo.classList.remove("hidden");
+    poiHeading.classList.add("hidden");
+  }
+
   const poiData = await getPOI(locationData);
   console.log(locationData, poiData);
 
@@ -50,4 +60,5 @@ const getPOI = async function (location) {
       poiSearchResults.append(poiName);
     }
   }
+
 })();

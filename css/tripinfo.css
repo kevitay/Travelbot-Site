@@ -35,3 +35,9 @@ h1 {
 #main-content a {
   color: #e60d2e;
 }
+
+#error-message {
+  color: #e60d2e;
+  font-size: 1.5em;
+  text-align: center;
+}
