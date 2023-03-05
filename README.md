@@ -2,7 +2,7 @@
 
 Our site will display travel points of interest and weather data from the user's chosen destination.
 
-## K-Names Team Workflows
+## Development Workflows
 - [Main story board](https://github.com/users/kevitay/projects/2/views/1?layout=board)
 
 ## Design
