@@ -1,6 +1,12 @@
 // Bind submit event of form
 let form = document.querySelector('#search-form');
 
+if (localStorage) {
+  
+localStorage.removeItem('location', destination);
+
+}
+
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 

@@ -46,6 +46,12 @@ h2 {
     display: block;
 }
 
+#weathererror-message {
+    color: #e60d2e;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
 
 
 

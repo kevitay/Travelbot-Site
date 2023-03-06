@@ -94,18 +94,21 @@ footer a:active {
 }
 
 #location-search h2,
-#tripinfo-search h2 {
+#tripinfo-search h2,
+#weather-search h2 {
   text-align: center;
   margin-bottom: 50px;
 }
 
 #search-form,
-#tripinfo-search-form {
+#tripinfo-search-form,
+#weather-search {
   text-align: center;
 }
 
 #destination,
-#tripinfo-destination {
+#tripinfo-destination,
+#weather-destination {
   height: 3em;
   border: 1px solid black;
   width: 25%;
@@ -115,6 +118,13 @@ footer a:active {
   font-weight: bold;
   margin-right: 1em;
 }
+
+.error-message {
+  color: #e60d2e;
+  font-size: 1.5em;
+  text-align: center;
+}
+
 
 .hidden {
   display: none;
