@@ -74,6 +74,7 @@ if (destination === null) {
     destination = localStorage.getItem("location");
 
     weatherSearchSection.classList.add("hidden");
+    forecastHeading.classList.remove("hidden");
 
     getWeather(destination).then(function (response) {
       displayWeatherForecast(response);
