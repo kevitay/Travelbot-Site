@@ -1,7 +1,9 @@
 let destination = localStorage.getItem("location");
 const forecastHeading = document.querySelector("#forecast-heading");
-const weatherSearch = document.querySelector("#weather-search");
+const weatherSearchSection = document.querySelector("#weather-search");
+const weatherSearchForm = document.querySelector("#weather-search-form");
 const weatherError =  document.querySelector("#weathererror-message");
+const userDirections = document.querySelector("#weatheruser-directions")
 const weatherForecast =  document.querySelector("#weather-forecast");
 const forecastListItems = document.querySelector("#daily-weather");
 
@@ -13,8 +15,8 @@ function removeChildNodes (parent) {
 
 const displayErrorComponents = function () {
   forecastHeading.classList.add("hidden");
-  weatherSearch.classList.remove("hidden");
-  weatherError.innerText = "Sorry, invalid input";
+  weatherSearchSection.classList.remove("hidden");
+  userDirections.innerText = "Please enter a location";
   removeChildNodes(forecastListItems);
 }
 
@@ -24,45 +26,62 @@ const getWeather = function (locale) {
   )
     .then((data) => data.json())
     .catch(function (error) {
-      console.log(error);
+      console.log(error)
       displayErrorComponents();
-      weatherError.innerText = "Sorry, location not found"
-      weatherError.classList.remove("hidden")
-      
     });
 
   return data;
 };
 
+const displayWeatherForecast = function (weatherData) {
+  const searchResults = document.querySelector("#weather-forecast");
+    
+  for (var i = 0; i < weatherData.days.length; i++) {
+    var date = document.createElement("li");
+    var high = document.createElement("p");
+    high.classList.add("high-temp");
+    var low = document.createElement("p");
+    low.classList.add("low-temp");
+    var precipitation = document.createElement("p");
+    var cloud = document.createElement("p");
+    var uv = document.createElement("p");
+    var destinationName = document.querySelector("#dest-name");
+    destinationName.innerText = destination;
+    date.innerText = `Date: ${weatherData.days[i].datetime}`;
+    high.innerText = `High: ${Math.round(weatherData.days[i].tempmax)}°`;
+    low.innerText = `Low: ${Math.round(weatherData.days[i].tempmin)}°`;
+    precipitation.innerText = `Precipitation: ${Math.round(weatherData.days[i].precip)}%`;
+    cloud.innerText = `Cloud Cover: ${Math.round(weatherData.days[i].cloudcover)}%`;
+    uv.innerText = `UV Index: ${Math.round(weatherData.days[i].uvindex)}`;
+    date.append(high);
+    date.append(low);
+    date.append(precipitation);
+    date.append(cloud);
+    date.append(uv);
+    searchResults.append(date);
+  }
+}
+
 if (destination === null) {
   displayErrorComponents();
+  userDirections.innerText = "Please enter a location";
+
+  weatherSearchForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    let weatherSearchValue = document.querySelector("#weather-destination").value;
+    
+    localStorage.setItem("location", weatherSearchValue);
+    destination = localStorage.getItem("location");
+
+    getWeather(destination).then(function (response) {
+      displayWeatherForecast(response);
+    });
+
+
+  });
+
 } else {
     getWeather(destination).then(function (response) {
-      const searchResults = document.querySelector("#weather-forecast");
-    
-      for (var i = 0; i < response.days.length; i++) {
-        var date = document.createElement("li");
-        var high = document.createElement("p");
-        high.classList.add("high-temp");
-        var low = document.createElement("p");
-        low.classList.add("low-temp");
-        var precipitation = document.createElement("p");
-        var cloud = document.createElement("p");
-        var uv = document.createElement("p");
-        var destinationName = document.querySelector("#dest-name");
-        destinationName.innerText = destination;
-        date.innerText = `Date: ${response.days[i].datetime}`;
-        high.innerText = `High: ${Math.round(response.days[i].tempmax)}°`;
-        low.innerText = `Low: ${Math.round(response.days[i].tempmin)}°`;
-        precipitation.innerText = `Precipitation: ${Math.round(response.days[i].precip)}%`;
-        cloud.innerText = `Cloud Cover: ${Math.round(response.days[i].cloudcover)}%`;
-        uv.innerText = `UV Index: ${Math.round(response.days[i].uvindex)}`;
-        date.append(high);
-        date.append(low);
-        date.append(precipitation);
-        date.append(cloud);
-        date.append(uv);
-        searchResults.append(date);
-      }
+      displayWeatherForecast(response);
     });
   }

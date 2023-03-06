@@ -89,13 +89,16 @@ footer a:active {
 }
 
 #location-search,
-#tripinfo-search {
+#tripinfo-search,
+#weather-search
+ {
   padding: 50px;
 }
 
 #location-search h2,
 #tripinfo-search h2,
-#weather-search h2 {
+#weather-search h2
+ {
   text-align: center;
   margin-bottom: 50px;
 }
@@ -128,4 +131,11 @@ footer a:active {
 
 .hidden {
   display: none;
+}
+
+#triperror-message,
+#tripuser-directions,
+#weathererror-message,
+#weatheruser-directions {
+  font-size: 1.5em;
 }

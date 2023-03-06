@@ -1,5 +1,9 @@
 let mainPageSearch = localStorage.getItem('location');
 let locationData;
+const errorInfoSection = document.querySelector("#tripinfo-search");
+const errorMessage = document.querySelector("#triperror-message");
+const userDirections = document.querySelector("#tripuser-directions");
+const poiHeading = document.querySelector("#poi-info h2");
 
 const getLocationData = async function (search) {
   let response = await fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${search}&apikey=5ae2e3f221c38a28845f05b68ceed8c701f04576cf1ba4710cff39a8`);
@@ -27,7 +31,6 @@ const getPOI = async function (location) {
 (async () => {
 
   locationData = await getLocationData(mainPageSearch);
-  const errorComponents = document.querySelector("#tripinfo-search");
 
   const displayPoiData = async function () {
     const poiData = await getPOI(locationData);
@@ -56,14 +59,23 @@ const getPOI = async function (location) {
     }
   }
 
-  const errorInfo = document.querySelector("#tripinfo-search");
-  const poiHeading = document.querySelector("#poi-info h2");
-
-  // If locationData.status = "NOT_FOUND"
+  // If mainPageSearch is null, or If locationData.status = "NOT_FOUND"
     // Display the #tripinfo-search section
-  if (locationData.status === "NOT_FOUND") {
-    errorInfo.classList.remove("hidden");
-    poiHeading.classList.add("hidden");
+  if (mainPageSearch === null || locationData.status === "NOT_FOUND") {
+
+    if (mainPageSearch === null) {
+      poiHeading.classList.add("hidden");
+      errorInfoSection.classList.remove("hidden");
+      errorMessage.classList.add("hidden");
+      userDirections.innerText = "Please enter a location";
+
+    } else if (locationData.status === "NOT_FOUND") {
+      poiHeading.classList.add("hidden");
+      errorMessage.classList.remove("hidden");
+      errorMessage.innerText = "Sorry, invalid input";
+      userDirections.innerText = "Please enter a valid location";
+      errorInfoSection.classList.remove("hidden");
+    }
 
   } else {
 
@@ -71,10 +83,8 @@ const getPOI = async function (location) {
 
   }
 
-  if (!(errorComponents.classList.contains("hidden"))) {
-    console.log("Time to clean up our errors!");
+  if (!(errorInfoSection.classList.contains("hidden"))) {
     let tripPageSearch = document.querySelector("#tripinfo-search-form");
-
 
     tripPageSearch.addEventListener("submit", function(e) {
       e.preventDefault();
@@ -83,7 +93,7 @@ const getPOI = async function (location) {
       localStorage.setItem('location', destination);
       mainPageSearch = localStorage.getItem('location');
 
-      errorInfo.classList.add("hidden");
+      errorInfoSection.classList.add("hidden");
       poiHeading.classList.remove("hidden");
 
       getLocationData(mainPageSearch);

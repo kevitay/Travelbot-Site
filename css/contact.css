@@ -4,7 +4,6 @@ h1 {
 }
 
 main {
-  padding-top: 125px;
   min-height: 80vh;
   width: 100%;
   text-align: center;
@@ -13,6 +12,8 @@ main {
 #form-content {
   display: inline-block;
   margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 60px;
 }
 
 .form-field {
