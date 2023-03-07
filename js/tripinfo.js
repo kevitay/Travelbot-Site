@@ -5,6 +5,8 @@ const errorMessage = document.querySelector("#triperror-message");
 const userDirections = document.querySelector("#tripuser-directions");
 const poiHeading = document.querySelector("#poi-info h2");
 
+poiHeading.classList.add('hidden');
+
 const getLocationData = async function (search) {
   let response = await fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${search}&apikey=5ae2e3f221c38a28845f05b68ceed8c701f04576cf1ba4710cff39a8`);
   let data = await response.json();
@@ -37,6 +39,8 @@ const getPOI = async function (location) {
     console.log(locationData, poiData);
   
     const poiSearchResults = document.querySelector('#poi-list');
+
+    poiHeading.classList.remove('hidden');
   
     for (var i = 0; i < poiData.length; i++) {
       if (poiData[i].name === '' || poiData[i].wikidata === undefined) {
@@ -64,13 +68,11 @@ const getPOI = async function (location) {
   if (mainPageSearch === null || locationData.status === "NOT_FOUND") {
 
     if (mainPageSearch === null) {
-      poiHeading.classList.add("hidden");
       errorInfoSection.classList.remove("hidden");
       errorMessage.classList.add("hidden");
       userDirections.innerText = "Please enter a location";
 
     } else if (locationData.status === "NOT_FOUND") {
-      poiHeading.classList.add("hidden");
       errorMessage.classList.remove("hidden");
       errorMessage.innerText = "Sorry, invalid input";
       userDirections.innerText = "Please enter a valid location";
@@ -94,7 +96,6 @@ const getPOI = async function (location) {
       mainPageSearch = localStorage.getItem('location');
 
       errorInfoSection.classList.add("hidden");
-      poiHeading.classList.remove("hidden");
 
       getLocationData(mainPageSearch);
       displayPoiData();
