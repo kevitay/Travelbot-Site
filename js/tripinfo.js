@@ -8,7 +8,7 @@ const poiHeading = document.querySelector("#poi-info h2");
 poiHeading.classList.add('hidden');
 
 const getLocationData = async function (search) {
-  let response = await fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${search}&apikey=5ae2e3f221c38a28845f05b68ceed8c701f04576cf1ba4710cff39a8`);
+  let response = await fetch(`https://api.opentripmap.com/0.1/en/places/geoname?name=${search}&apikey=5ae2e3f221c38a28845f05b6e5904e84a6415805d361e533e1ef2da0`);
   let data = await response.json();
   return data;
 };
@@ -17,7 +17,7 @@ const getPOI = async function (location) {
   // defined another api call here and locationData will be defined.
 
   let response = await fetch(
-    `https://api.opentripmap.com/0.1/en/places/radius?radius=24140&lon=${location.lon}&lat=${location.lat}&format=json&limit=50&apikey=5ae2e3f221c38a28845f05b68ceed8c701f04576cf1ba4710cff39a8`
+    `https://api.opentripmap.com/0.1/en/places/radius?radius=24140&lon=${location.lon}&lat=${location.lat}&format=json&limit=50&apikey=5ae2e3f221c38a28845f05b6e5904e84a6415805d361e533e1ef2da0`
   );
   let data = await response.json();
   return data;
