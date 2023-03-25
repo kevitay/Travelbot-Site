@@ -22,7 +22,8 @@ const displayErrorComponents = function () {
 
 const getWeather = function (locale) {
   let data = fetch(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locale}/next7days?key=L4U22KUSLGN3YLLFFS97G59BS&include=days&elements=datetime,tempmax,tempmin,precip,cloudcover,uvindex`
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locale}/next7days?key=3YNSL2SS7V2BH3CWF4R5LQML3&include=days&iconSet=icons2&elements=datetime,tempmax,tempmin,precip,cloudcover,uvindex,icon`
+    // https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locale}/next7days?key=L4U22KUSLGN3YLLFFS97G59BS&include=days&elements=datetime,tempmax,tempmin,precip,cloudcover,uvindex
   )
     .then((data) => data.json())
     .catch(function (error) {
