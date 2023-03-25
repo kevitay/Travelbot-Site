@@ -21,7 +21,7 @@ h2 {
 }
 
 .high-temp {
-    color: rgb(192, 13, 13);
+    color: #e60d2e;
     font-weight:bold !important;
 }
 
@@ -31,13 +31,29 @@ h2 {
 }
 
 .weather-day {
+    display: flex;
+    justify-content: space-evenly;
     font-size: 1.75em;
     font-weight: bold;
-    list-style: none;
-    border: 1px solid black;
-    margin-bottom: 15px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
     padding: 20px;
-    width: 50%;
+    width: 70%;
+}
+
+.weather-day:last-child {
+    border-bottom: 1px solid black;
+}
+
+.weather-day img {
+    height: fit-content;
+}
+
+.weather-day * {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2em;
 }
 
 .weather-date {

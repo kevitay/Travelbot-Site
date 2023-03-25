@@ -45,11 +45,17 @@ destinationName.innerText = destination;
     let weatherForecastDay = document.createElement("div");
     weatherForecastDay.classList.add("weather-day");
 
+    let weatherDayIcon = document.createElement("img");
+    weatherDayIcon.classList.add("weather-img");
+    // weatherDayIcon.src = "../icon/" + weatherData.days[i].icon + ".png";
+    weatherDayIcon.src = `../icon/${weatherData.days[i].icon}.png`;
+    weatherForecastDay.append(weatherDayIcon);
+
     let date = document.createElement("p");
     if (i === 0) {
       date.innerText = `Today`;
     } else {
-      date.innerText = `${(weatherData.days[i].datetime).substring(5)}`;
+      date.innerText = `${(weatherData.days[i].datetime).substring(5).replaceAll("-", "/")}`;
     }
     weatherForecastDay.appendChild(date);
     date.classList.add("weather-date");
