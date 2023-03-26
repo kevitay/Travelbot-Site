@@ -32,6 +32,7 @@ h2 {
 
 .weather-day {
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
     font-size: 1.75em;
     font-weight: bold;
@@ -39,21 +40,40 @@ h2 {
     border-left: 1px solid black;
     border-right: 1px solid black;
     padding: 20px;
-    width: 70%;
+    width: 60%;
 }
+
+.weather-day img {
+    width: fit-content;
+}
+
+@media screen and (max-width: 1000px) {
+    .weather-day {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-size: 1.75em;
+        font-weight: bold;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        padding: 20px;
+        width: 100%;
+    }
+
+    .weather-day img {
+        width: fit-content;
+    }
+  }
 
 .weather-day:last-child {
     border-bottom: 1px solid black;
 }
 
-.weather-day img {
-    height: fit-content;
-}
-
 .weather-day * {
     display: flex;
     flex-direction: column;
-    margin-right: 2em;
+    margin-right: 1em;
 }
 
 .weather-date {
